@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BOOK</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
+  </head>
+  <body>
+    <div class="container py-3">
+      <header class="p-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a href="book.html" class="nav-link active" aria-current="page">오픈북</a>
+          </li>
+          <li class="nav-item">
+            <a href="kye.html" class="nav-link">단축키</a>
+          </li>
+        </ul>
+      </header>
+
+      <div class="container">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">toggle</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const button_01 = document.querySelector('.btn');
+
+button_01.addEventListener('click', () => {
+  button_01.classList.toggle('active');
+});
+</code>
+</pre>
+<pre>
+<code class="language-javascript">
+const buttons_01 = document.querySelectorAll('.button');
+
+buttons_01.forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('active');
+  });
+});
+</code>
+</pre>
+<pre>
+<code class="language-javascript">
+const menuButton = document.querySelector('.menu-button');
+const menu = document.querySelector('.menu');
+
+menuButton.addEventListener('click', () => {
+  menu.classList.toggle('is-open');
+});
+</code>
+</pre>
+
+          </div>
+        </div>
+
+        
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">tab</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+
+    tabButtons.forEach(button => {
+      button.classList.remove('active');
+    });
+
+    tabContents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    button.classList.add('active');
+    tabContents[index].classList.add('active');
+  });
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">accordion</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const accordionButtons = document.querySelectorAll('.accordion-button');
+
+accordionButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.parentElement;
+
+    item.classList.toggle('active');
+  });
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">modal</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const button = document.querySelector('.btn');
+const popup = document.querySelector('.popup');
+
+button.addEventListener('click', () => {
+  popup.classList.add('active');
+});
+</code>
+</pre>
+<pre>
+<code class="language-javascript">
+const closeButton = document.querySelector('.close');
+
+closeButton.addEventListener('click', () => {
+  popup.classList.remove('active');
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">scroll header</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    header.classList.add('is-scroll');
+  } else {
+    header.classList.remove('is-scroll');
+  }
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">anchor</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const button = document.querySelector('.btn');
+const section = document.querySelector('.section');
+
+button.addEventListener('click', () => {
+  section.scrollIntoView({
+    behavior: 'smooth'
+  });
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">클릭한 요소의 부모 찾기</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.item');
+
+    item.classList.toggle('active');
+  });
+});
+
+parentElement = 바로 한 단계 위 부모만 선택
+console.log(button.parentElement);
+
+closest() = 조건에 맞는 부모를 만날 때까지 위로 올라감
+console.log(button.closest('.item'));
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">input값 가져오기</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+const input = document.querySelector('.input');
+const button = document.querySelector('.button');
+
+button.addEventListener('click', () => {
+  console.log(input.value);
+});
+</code>
+</pre>
+          </div>
+        </div>
+
+
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h6 class="my-0 fw-normal">Free</h6> 
+          </div> 
+          <div class="card-body">
+<pre>
+<code class="language-javascript">
+javascript
+</code>
+</pre>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+
+
+
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>
